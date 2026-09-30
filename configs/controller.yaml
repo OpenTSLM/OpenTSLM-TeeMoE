@@ -1,0 +1,18 @@
+# Controller over the three frozen experts.
+data:
+  native: data/native/train.jsonl
+  analysis: data/analysis/train.jsonl
+  aggregation: artifacts/aggregation/editor_cache
+experts:
+  aggregation: artifacts/aggregation/expert/adapter
+  native: artifacts/native/adapter
+  analysis: artifacts/analysis/adapter
+  editor: artifacts/aggregation/expert/editor.safetensors
+output: artifacts/controller
+examples: {aggregation: 334, native: 333, analysis: 333}
+batch_per_capability: 8
+learning_rate: 1.0e-4
+balance_learning_rate: 0.05           # the task-text / full-request balance, kept in [0, 1]
+weight_decay: 0.0
+beta: 0.05
+seed: 1

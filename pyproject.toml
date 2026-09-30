@@ -1,0 +1,70 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "teemoe"
+version = "1.0.0"
+description = "OpenTSLM TeeMoE: numerical forecasting, contextual forecasting and time-series analysis with one language model"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "torch>=2.8,<2.10",
+    "transformers==5.14.1",
+    "peft>=0.15",
+    "safetensors>=0.4",
+    "huggingface-hub>=1.5,<2",
+    "numpy>=2.1,<2.2",
+    "pandas>=2.0,<3",
+    "pyyaml>=6.0",
+    "xgboost>=3.0,<4",
+    "tsfeatures==0.4.5",
+    "gluonts>=0.16,<0.17",
+    "datasets>=2.17,<3",
+    "pyarrow>=14",
+    "python-dotenv>=1.0",
+    "toolz>=0.12",
+    "lm-format-enforcer==0.11.3",
+]
+
+[project.optional-dependencies]
+# FLA and causal-conv1d kernels for Qwen3.6's recurrent layers (required on GPU)
+kernels = [
+    "causal-conv1d>=1.6.2.post1,<1.7",
+    "fla-core>=0.5.1,<0.6",
+    "kernels>=0.15.2,<0.16",
+    "tilelang>=0.1.12,<0.2",
+]
+# Context-is-Key benchmark dependencies
+eval = [
+    "causalchamber==0.1.1",
+    "h5py>=3.10",
+    "networkx>=3.2",
+    "scipy>=1.11",
+    "statsmodels>=0.14",
+    "tactis @ git+https://github.com/ServiceNow/TACTiS.git@tactis-2",
+    "termcolor>=2.4",
+]
+dev = ["pytest>=8.0", "ruff>=0.9"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["teemoe"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+ignore = ["E731"]
+
+[tool.uv.extra-build-dependencies]
+causal-conv1d = [{ requirement = "torch", match-runtime = true }]

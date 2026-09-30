@@ -1,0 +1,26 @@
+# Numerical ensemble and aggregation expert.
+data: data/aggregation                # output of teemoe.data.aggregation
+output: artifacts/aggregation
+
+# Forecasting models (prepare stage)
+devices: [0, 1, 2, 3, 4, 5, 6, 7]
+forecast_shards: 8                    # worker processes per model
+environments:                         # Python environments, created by scripts/setup.sh
+  default: .venv-fm/bin/python
+  timer_s1: .venv-timer/bin/python
+  moirai2: .venv-moirai/bin/python
+granite: third_party/granite-tsfm
+workers: 32                           # CPU processes for features
+editor_blocks: [gift_sampled, gift_rolling]
+router: {}                            # overrides of teemoe.ensemble.router.RouterRecipe
+
+# Aggregation expert (editor stage)
+lora: {rank: 4, alpha: 8}
+updates: 128
+global_batch_size: 32
+micro_batch_size: 8
+learning_rate: 3.0e-5
+weight_decay: 0.0
+beta: 0.05                            # SmoothL1 transition
+edit_weight: 0.2                      # squared-correction penalty
+seed: 1

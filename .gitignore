@@ -1,0 +1,10 @@
+__pycache__/
+*.egg-info/
+.ruff_cache/
+.pytest_cache/
+/.venv*
+/third_party/
+/data/
+/artifacts/
+/checkpoints/
+/results/

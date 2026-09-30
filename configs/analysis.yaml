@@ -1,0 +1,15 @@
+# Analysis expert: one LoRA over 12,000 time-series question-answer examples.
+data: data/analysis/train.jsonl
+output: artifacts/analysis
+lora: {rank: 16, alpha: 32}
+kl_forward: 0.05             # KL(p_base || p) to the frozen backbone
+kl_reverse: 0.05             # KL(p || p_base)
+learning_rate: 1.0e-5
+weight_decay: 0.0
+warmup_ratio: 0.05
+final_lr_fraction: 0.1
+global_batch_size: 8
+length_bucket_batches: 64
+max_tokens: 32768
+seed: 20260901
+checkpoint_every: 500

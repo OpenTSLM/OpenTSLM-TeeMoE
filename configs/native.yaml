@@ -1,0 +1,15 @@
+# Native forecasting expert: one LoRA over 20,000 contextual forecasting examples.
+data: data/native/train.jsonl
+output: artifacts/native
+lora: {rank: 32, alpha: 64}
+kl_forward: 0.5              # KL(p_base || p) to the frozen backbone
+kl_reverse: 0.0
+learning_rate: 1.0e-5
+weight_decay: 0.01
+warmup_ratio: 0.05
+final_lr_fraction: 0.1       # cosine decay to 10% of the peak
+global_batch_size: 8
+length_bucket_batches: 64
+max_tokens: 32768
+seed: 20260811
+checkpoint_every: 500
