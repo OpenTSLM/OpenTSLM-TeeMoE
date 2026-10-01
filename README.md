@@ -9,13 +9,14 @@ learned controller composing their weights for each request.
 This repository provides the model's inference API, evaluation tools, and training
 code as part of the [OpenTSLM](https://github.com/OpenTSLM) project.
 
-[Paper](https://arxiv.org/abs/ARXIV_ID) · [Hugging Face](https://huggingface.co/OpenTSLM/TeeMoE) ·
+[Paper](https://arxiv.org/abs/2609.40265) · [Hugging Face](https://huggingface.co/OpenTSLM/TeeMoE) ·
 [News](#news) · [Installation](#installation) · [Quickstart](#quickstart-with-pretrained-models-on-hugging-face) ·
 [More examples](#more-examples) · [Evaluation](#evaluation) ·
 [Citation](#citation) · [Authors](#authors) · [License](LICENSE) · [Training](#training)
 
 ## News
 
+- **October 2026:** Our [paper](https://arxiv.org/abs/2609.40265), code, and [pretrained model](https://huggingface.co/OpenTSLM/TeeMoE) are now available.
 - 🎉 **September 2026:** OpenTSLM TeeMoE has been accepted to the [Foundation Models for Temporal Systems (FMTS) workshop at NeurIPS 2026](https://fmts-workshop.github.io/index.html#program)!
 
 <p align="center">
@@ -315,9 +316,10 @@ If you use TeeMoE in your work, please cite:
   title = {{OpenTSLM TeeMoE: A Unified Time-Series Language Model for Forecasting, Contextual Prediction, and Reasoning}},
   author = {Tony Chen and Timo Stoffregen and Maxwell Xu and Thomas Kaar and Martin Maritsch and Geremia Pompei and Nicolas Zumarraga and Robert Jakob and Paul Schmiedmayer and Patrick Langer and Juncheng Liu},
   year = {2026},
-  eprint = {ARXIV_ID},
+  eprint = {2609.40265},
   archivePrefix = {arXiv},
-  url = {https://arxiv.org/abs/ARXIV_ID}
+  primaryClass = {cs.LG},
+  url = {https://arxiv.org/abs/2609.40265}
 }
 ```
 
